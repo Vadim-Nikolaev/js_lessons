@@ -11,6 +11,18 @@ console.log('Sample JavaScript #2 HW #16');
  * age – любой возраст, число
  */
 
+var userObj = {
+  firstName: 'Vasyl',
+  lastName: 'Pupkin',
+  age: 30,
+  fullName() {
+    return `${userObj.firstName} ${userObj.lastName}`;
+  }
+};
+
+console.log(userObj)
+
+
 /*
  * #2
  *
@@ -22,6 +34,14 @@ console.log('Sample JavaScript #2 HW #16');
  * userObj.lastName ← Фамилия'
  * userObj.fullName() → 'Имя Фамилия'.
  */
+
+console.log(userObj.fullName())
+
+
+
+
+
+ 
 
 /*
  * #3
