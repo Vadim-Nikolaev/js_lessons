@@ -14,14 +14,13 @@ console.log('Sample JavaScript #2 HW #16');
 var userObj = {
   firstName: 'Vasyl',
   lastName: 'Pupkin',
-  age: 30,
+  age: 25,
   fullName() {
     return `${userObj.firstName} ${userObj.lastName}`;
   }
-};
+}
 
-console.log(userObj)
-
+console.log(userObj.fullName());
 
 /*
  * #2
@@ -34,14 +33,6 @@ console.log(userObj)
  * userObj.lastName ← Фамилия'
  * userObj.fullName() → 'Имя Фамилия'.
  */
-
-console.log(userObj.fullName())
-
-
-
-
-
- 
 
 /*
  * #3
@@ -56,8 +47,12 @@ console.log(userObj.fullName())
  * При выполнении задачи не используйте оператор if, требуется решение с логическим оператором ||.
  */
 
+function defUpperStr(string) {
+  return (string || 'default text').toUpperCase();
+}
+
 /* eslint-disable capitalized-comments */
-// console.log(defUpperStr('My text')); // MY TEXT
+console.log(defUpperStr('My text')); // MY TEXT
 
 // console.log(defUpperStr()); // DEFAULT TEXT
 
@@ -78,11 +73,18 @@ console.log(userObj.fullName())
  * evenFn(20) → [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
  */
 
-// console.log(evenFn(10)); // [2, 4, 6, 8, 10]
+function evenFn(n) {
+  var arr = [];
+  var i;
+  for (i = 1; i <= n; i++) if (i % 2 === 0) arr.push(i);
+  return arr;
+}
 
-// console.log(evenFn(15)); // [2, 4, 6, 8, 10, 12, 14]
+console.log(evenFn(10)); // [2, 4, 6, 8, 10]
 
-// console.log(evenFn(20)); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+console.log(evenFn(15)); // [2, 4, 6, 8, 10, 12, 14]
+
+console.log(evenFn(20)); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
 /*
  * #5
@@ -98,6 +100,19 @@ console.log(userObj.fullName())
  *
  * В реализации функции обязательно должны быть использованы операторы switch / case / default.
  */
+
+function weekFn(n) {
+  switch(n) {
+    case 1: return 'Понедельник';
+    case 2: return 'Вторник';
+    case 3: return 'Среда';
+    case 4: return 'Четверг';
+    case 5: return 'Пятница';
+    case 6: return 'Суббота';
+    case 7: return 'Воскресенье';
+    default: return null;
+  }
+}
 
 // console.log(weekFn(1)); // 'Понедельник'
 
@@ -128,41 +143,45 @@ console.log(userObj.fullName())
  * При выполнении задания допускается использовать только тернарный оператор ?.
  * Использование операторов if, switch – запрещено.
  */
+function ageClassification(n) {
+// return n < 0 ? null : n < 25 ? 'детский возраст' : n <= 44 ? 'молодой возраст' : n < 65 ? 'средний возраст' : n < 75 ? 'пожилой возраст' : n < 90 ? 'старческий возраст' : n < 122 ? 'долгожители' : null;
 
-// console.log('-1 :', ageClassification(-1)); // -1 : null
+return n > 122 ? null : n > 90 ? 'долгожители' : n > 75 ? 'старческий возраст' : n > 65 ? 'пожилой возраст' : n > 44 ? 'средний возраст' : n > 24 ? 'молодой возраст' : n > 0 ? 'детский возраст' : null;
+}
 
-// console.log('5 :', ageClassification(5)); // 5 : детский возраст
+console.log('-1 :', ageClassification(-1)); // -1 : null
 
-// console.log('34 :', ageClassification(34)); // 34 : молодой возраст
+console.log('5 :', ageClassification(5)); // 5 : детский возраст
 
-// console.log('50 :', ageClassification(50)); // 50 : средний возраст
+console.log('34 :', ageClassification(34)); // 34 : молодой возраст
 
-// console.log('65.1 :', ageClassification(65.1)); // 65.1 : пожилой возраст
+console.log('50 :', ageClassification(50)); // 50 : средний возраст
 
-// console.log('80 :', ageClassification(80)); // 80 : старческий возраст
+console.log('65.1 :', ageClassification(65.1)); // 65.1 : пожилой возраст
 
-// console.log('110 :', ageClassification(110)); // 110 : долгожители
+console.log('80 :', ageClassification(80)); // 80 : старческий возраст
 
-// console.log('130 :', ageClassification(130)); // 130 : null
+console.log('110 :', ageClassification(110)); // 110 : долгожители
 
-/*
- * Блок тестирования:
- * console.log(1, ageClassification(-1) === null);
- * console.log(2, ageClassification(1) === 'детский возраст');
- * console.log(3, ageClassification(24) === 'детский возраст');
- * console.log(4, ageClassification(24.01) === 'молодой возраст');
- * console.log(5, ageClassification(44) === 'молодой возраст');
- * console.log(6, ageClassification(44.01) === 'средний возраст');
- * console.log(7, ageClassification(65) === 'средний возраст');
- * console.log(8, ageClassification(65.01) === 'пожилой возраст');
- * console.log(9, ageClassification(75) === 'пожилой возраст');
- * console.log(10, ageClassification(75.01) === 'старческий возраст');
- * console.log(11, ageClassification(90) === 'старческий возраст');
- * console.log(12, ageClassification(90.01) === 'долгожители');
- * console.log(13, ageClassification(122) === 'долгожители');
- * console.log(14, ageClassification(122.01) === null);
- * console.log(15, ageClassification(150) === null);
- */
+console.log('130 :', ageClassification(130)); // 130 : null
+
+console.log(1, ageClassification(-1) === null);
+
+  console.log(2, ageClassification(1) === 'детский возраст');
+  console.log(3, ageClassification(24) === 'детский возраст');
+  console.log(4, ageClassification(24.01) === 'молодой возраст');
+  console.log(5, ageClassification(44) === 'молодой возраст');
+  console.log(6, ageClassification(44.01) === 'средний возраст');
+  console.log(7, ageClassification(65) === 'средний возраст');
+  console.log(8, ageClassification(65.01) === 'пожилой возраст');
+  console.log(9, ageClassification(75) === 'пожилой возраст');
+  console.log(10, ageClassification(75.01) === 'старческий возраст');
+  console.log(11, ageClassification(90) === 'старческий возраст');
+  console.log(12, ageClassification(90.01) === 'долгожители');
+  console.log(13, ageClassification(122) === 'долгожители');
+  console.log(14, ageClassification(122.01) === null);
+  console.log(15, ageClassification(150) === null);
+ 
 
 /*
  * #7
@@ -174,18 +193,27 @@ console.log(userObj.fullName())
  * 0 не должен попадать в результирующий массив
  * цикл должен работать до n включительно
  * разрешен только оператор while
- *
+ * 
  * Например:
  * oddFn(10) → [1, 3, 5, 7, 9]
  * oddFn(15) → [1, 3, 5, 7, 9, 11, 13, 15]
  * oddFn(20) → [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
  */
 
-// console.log(oddFn(10)); // [1, 3, 5, 7, 9]
+function oddFn(n) {
+  var arr = [];
+  var x = 0;
+  while (x++ < n) if (x % 2 !== 0 ) arr.push(x);
+  return arr;
+};
 
-// console.log(oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
 
-// console.log(oddFn(20)); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+console.log(oddFn(10)); // [1, 3, 5, 7, 9]
+
+console.log(oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
+
+console.log(oddFn(20)); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 /*
  * #8
@@ -199,6 +227,12 @@ console.log(userObj.fullName())
  *
  */
 
+ function mainFunc(a, b, callback) {
+  if (callback && typeof callback !== 'function') return false;
+  return callback(a, b);
+
+
+ }
 /*
  * реализуйте следующие функции, которые будут осуществлять механизм callback в основной функции,
  * возвращая ей результат собственного вычисления...
@@ -207,9 +241,19 @@ console.log(userObj.fullName())
 
 // cbRandom(a, b) – вычисляет и возвращает произвольное целое число в диапазоне между a и b включительно.
 
+ function cbRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+ };
 // cbPow(a, b) – вычисляет и возвращает результат возведения числа a в степень b.
 
+function cbPow(a, b) {
+  return Math.pow(a, b);
+};
+
 // cbAdd(a, b) – вычисляет и возвращает сумму двух чисел a и b.
+function cbAdd(a, b) {
+  return (a + b);
+}
 
 /*
  * mainFunc() должна возвращать результат работы переданной ей возвратной функции, например:
@@ -220,10 +264,10 @@ console.log(userObj.fullName())
  * mainFunc(2, 5, 'not a func') → false
  */
 
-// console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
+console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
 
-// console.log(mainFunc(2, 5, cbPow)); // 32
+console.log(mainFunc(2, 5, cbPow)); // 32
 
-// console.log(mainFunc(2, 5, cbAdd)); // 7
+console.log(mainFunc(2, 5, cbAdd)); // 7
 
-// console.log(mainFunc(2, 5, 'not a func')); // false
+console.log(mainFunc(2, 5, 'not a func')); // false
